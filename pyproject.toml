@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "curso-django-projeto1"
+name = "Recipes"
 version = "1.0.0"
 description = ""
 authors = ["Ariel Mesquita <arielmesquita@live.com>"]
