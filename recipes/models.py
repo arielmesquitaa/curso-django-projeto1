@@ -1,3 +1,4 @@
+from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -19,7 +20,7 @@ class Recipe(models.Model):
     servings_unit = models.CharField(max_length=65)
     create_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    preparation_steps = models.TextField()
+    preparation_steps = RichTextField()
     is_published = models.BooleanField()
     cover = models.ImageField(
         upload_to='recipes/covers/%Y/%m/%d/', blank=True, default='')

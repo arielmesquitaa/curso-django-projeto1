@@ -9,6 +9,7 @@ license = "MIT"
 python = "^3.10"
 Django = "^3"
 Pillow = "^9.0.1"
+django-ckeditor = "^6.2.0"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"
