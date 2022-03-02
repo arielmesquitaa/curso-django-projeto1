@@ -6,7 +6,8 @@ from .models import Recipe
 
 # Create your views here.
 def home(request):
-    recipes = Recipe.objects.filter(is_published=True).order_by('-id')
+    qs = Recipe.objects.filter(is_published=True).order_by('-id')
+    recipes = get_list_or_404(qs)
     return render(request, 'recipes/pages/home.html', context={
         'recipes': recipes
     })
