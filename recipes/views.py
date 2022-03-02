@@ -1,25 +1,25 @@
 from django.shortcuts import get_list_or_404, get_object_or_404, render
 from utils.recipes.factory import make_recipe
 
-from .models import Recipe
+from .models import Category, Recipe
 
 
 # Create your views here.
 def home(request):
-    qs = Recipe.objects.filter(is_published=True).order_by('-id')
-    recipes = get_list_or_404(qs)
+    recipes = Recipe.objects.filter(is_published=True).order_by('-id')
     return render(request, 'recipes/pages/home.html', context={
         'recipes': recipes
     })
 
 
 def category(request, category_id):
-    qs = Recipe.objects.filter(
+    qs = Category.objects.filter(id=category_id)
+    category = get_list_or_404(qs)
+    recipes = Recipe.objects.filter(
         category__id=category_id, is_published=True).order_by('-id')
-    recipes = get_list_or_404(qs)
     return render(request, 'recipes/pages/category.html', context={
         'recipes': recipes,
-        'title': recipes[0].category.name
+        'title': category[0].name
     })
 
 
