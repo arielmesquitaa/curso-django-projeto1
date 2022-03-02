@@ -21,12 +21,13 @@ class Recipe(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     preparation_steps = models.TextField()
     is_published = models.BooleanField()
-    cover = models.ImageField(upload_to='recipes/covers/%Y/%m/%d/')
+    cover = models.ImageField(
+        upload_to='recipes/covers/%Y/%m/%d/', blank=True, default='')
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True, blank=True, default=None
     )
     author = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True
+        User, on_delete=models.SET_NULL, null=True, blank=True
     )
 
     def __str__(self) -> str:
